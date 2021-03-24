@@ -4,6 +4,6 @@ import {User} from './user';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  user$$ = new ReplaySubject<User>(1);
+  user$$ = new ReplaySubject<User | null>(1);
   user$ = this.user$$.asObservable();
 }

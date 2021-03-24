@@ -3,6 +3,7 @@ import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
 import {Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {UserService} from '../user/user.service';
+import {User} from '../user/user';
 
 interface IdentityClaims {
   sub: string;
@@ -40,7 +41,15 @@ export class SecurityService {
     this.emitUser(this.oauthService.getIdentityClaims() as IdentityClaims);
   }
 
-  private emitUser({sub, preferred_username}: IdentityClaims): void {
-    this.userService.user$$.next({id: sub, username: preferred_username});
+  logout(): void {
+    this.oauthService.logOut();
+  }
+
+  private emitUser(claims: IdentityClaims): void {
+    let user: User | null = null;
+    if (claims) {
+      user = {id: claims.sub, username: claims.preferred_username};
+    }
+    this.userService.user$$.next(user);
   }
 }

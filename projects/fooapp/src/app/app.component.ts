@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {SecurityService} from '@foo/core';
 
 @Component({
@@ -8,7 +8,12 @@ import {SecurityService} from '@foo/core';
 })
 export class AppComponent {
   title = 'fooapp';
-  constructor(securityService: SecurityService) {
+
+  constructor(private securityService: SecurityService) {
     securityService.runInitialLoginSequence();
+  }
+
+  logout(): void {
+    this.securityService.logout();
   }
 }
