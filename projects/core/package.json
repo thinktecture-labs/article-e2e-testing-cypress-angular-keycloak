@@ -1,6 +1,8 @@
 {
   "name": "core",
   "version": "0.0.1",
+  "main": "./src/public-api.ts",
+  "typings": "./src/public-api.ts",
   "peerDependencies": {
     "@angular/common": "^11.2.6",
     "@angular/core": "^11.2.6"

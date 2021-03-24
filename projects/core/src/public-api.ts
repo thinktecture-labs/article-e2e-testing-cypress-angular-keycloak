@@ -2,6 +2,5 @@
  * Public API Surface of core
  */
 
-export * from './lib/core.service';
-export * from './lib/core.component';
-export * from './lib/core.module';
+export * from './lib/security/public-api';
+export * from './lib/user/public-api';

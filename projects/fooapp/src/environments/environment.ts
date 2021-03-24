@@ -2,8 +2,22 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import {SecurityConfig} from '@foo/core';
+
+export const environment: { production: boolean } & SecurityConfig = {
+  production: false,
+  security: {
+    issuer: 'http://localhost:8080/auth/realms/demo',
+    clientId: 'e2e-demo-app',
+    responseType: 'code',
+    redirectUri: window.location.origin,
+    useSilentRefresh: true,
+    scope: 'profile email',
+    showDebugInformation: false,
+    sessionChecksEnabled: true,
+    timeoutFactor: 0.01,
+    clearHashAfterLogin: false
+  },
 };
 
 /*
