@@ -1,0 +1,9 @@
+<ng-container *ngIf="userService.user$ | async as user">
+  <button class="current" mat-stroked-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon>{{user.username}}</button>
+</ng-container>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="userService.logout$$.next()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

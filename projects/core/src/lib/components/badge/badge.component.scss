@@ -1,0 +1,11 @@
+:host {
+  display: inline-grid;
+  place-items: center;
+  border-radius: 15px;
+  padding: 3px 5px;
+  min-width: 16px;
+  color: white;
+  font-size: 12px;
+  z-index: var(--z-index-badge);
+  background: #FF240A;
+}

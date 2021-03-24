@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
 import {Router} from '@angular/router';
-import {filter} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {UserService} from '../user/user.service';
 import {User} from '../user/user';
+import {Subject} from 'rxjs';
 
 interface IdentityClaims {
   sub: string;
@@ -11,11 +12,16 @@ interface IdentityClaims {
 }
 
 @Injectable({providedIn: 'root'})
-export class SecurityService {
+export class SecurityService implements OnDestroy {
+  #destroy$$ = new Subject<void>();
+
   constructor(private config: AuthConfig,
               private oauthService: OAuthService,
               private userService: UserService,
               private router: Router) {
+    this.userService.logout$.pipe(
+      takeUntil(this.#destroy$$)
+    ).subscribe(() => oauthService.logOut());
   }
 
   runInitialLoginSequence(): void {
@@ -41,15 +47,15 @@ export class SecurityService {
     this.emitUser(this.oauthService.getIdentityClaims() as IdentityClaims);
   }
 
-  logout(): void {
-    this.oauthService.logOut();
-  }
-
   private emitUser(claims: IdentityClaims): void {
     let user: User | null = null;
     if (claims) {
       user = {id: claims.sub, username: claims.preferred_username};
     }
     this.userService.user$$.next(user);
+  }
+
+  ngOnDestroy(): void {
+    this.#destroy$$.next();
   }
 }

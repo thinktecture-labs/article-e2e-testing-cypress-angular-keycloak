@@ -1,0 +1,21 @@
+:host {
+  display: inline-flex;
+  background: rgba(0, 0, 0, .1);
+  border-radius: 15px;
+  padding: 10px;
+  backdrop-filter: blur(10px) saturate(120%);
+}
+
+.labs-item {
+  position: relative;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+labs-badge {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+}

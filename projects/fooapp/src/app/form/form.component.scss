@@ -1,0 +1,23 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-toolbar {
+  opacity: .4;
+  backdrop-filter: blur(20px);
+}
+
+.form-container {
+  display: grid;
+  place-items: center;
+  flex: 1 1 auto;
+}
+
+
+[mat-fab]{
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+}

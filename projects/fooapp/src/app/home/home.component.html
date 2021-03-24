@@ -1,0 +1,13 @@
+<div class="header"><labs-user></labs-user></div>
+<mat-list class="items">
+  <mat-list-item *ngFor="let item of itemService.items">
+    <mat-checkbox mat-list-icon></mat-checkbox>
+    <div mat-line>{{item}}</div>
+  </mat-list-item>
+</mat-list>
+<div class="apps">
+  <labs-button *ngFor="let app of apps"></labs-button>
+</div>
+<div class="dock">
+  <labs-dock [items]="primaryApps"></labs-dock>
+</div>

@@ -1,0 +1,4 @@
+<div class="labs-item" *ngFor="let item of items">
+  <labs-button matRipple [icon]="item.icon" (click)="item.click && item.click()" data-test="dock-button"></labs-button>
+  <labs-badge *ngIf="item.value" [value]="item.value"></labs-badge>
+</div>

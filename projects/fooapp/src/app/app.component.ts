@@ -7,13 +7,7 @@ import {SecurityService} from '@foo/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fooapp';
-
   constructor(private securityService: SecurityService) {
     securityService.runInitialLoginSequence();
-  }
-
-  logout(): void {
-    this.securityService.logout();
   }
 }

@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="back()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="form-container" [formGroup]="formGroup">
+  <mat-form-field appearance="fill" >
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" required autocomplete="off" data-test="title">
+  </mat-form-field>
+
+</div>
+<button mat-fab [disabled]="!formGroup.valid" (click)="save()" data-test="save">
+  <mat-icon>save</mat-icon>
+</button>

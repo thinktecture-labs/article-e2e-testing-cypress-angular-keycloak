@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 10px;
+  padding: 20px;
+
+  mat-list-item {
+    background-color: rgba(0, 0, 0, .2);
+  }
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+  grid-gap: 20px;
+  flex: 1 1 auto;
+  padding: 20px;
+  place-items: center;
+}
+
+.dock {
+  display: grid;
+  place-items: center;
+  padding: 10px;
+}
